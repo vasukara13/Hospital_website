@@ -1,0 +1,15 @@
+<!-- templates/facilities.html -->
+{% extends "base.html" %}
+{% block title %}Facilities - Sadhuram Memorial Hospital{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Our Facilities</h2>
+    <ul>
+        <li><a href="{{ url_for('facility_detail', facility_name='Chemotherapy') }}">Chemotherapy</a></li>
+        <li><a href="{{ url_for('facility_detail', facility_name='Radiation Therapy') }}">Radiation Therapy</a></li>
+        <li><a href="{{ url_for('facility_detail', facility_name='X-ray') }}">X-ray</a></li>
+        <!-- Add more facilities as needed -->
+    </ul>
+</section>
+{% endblock %}

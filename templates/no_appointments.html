@@ -1,0 +1,18 @@
+<!-- templates/no_appointments.html -->
+{% extends "base.html" %}
+{% block title %}No Appointments Available - Sadhuram Memorial Hospital{% endblock %}
+
+{% block head %}
+<!-- Link to no_appointments.css if you have a separate stylesheet -->
+<link rel="stylesheet" href="{{ url_for('static', filename='no_appointments.css') }}">
+{% endblock %}
+
+  
+{% block content %}
+<section>
+    <h2>No Appointments Available</h2>
+    <p>We're sorry, but there are no available appointment slots on <strong>{{ appointment_date }}</strong> for the <strong>{{ department }}</strong>.</p>
+    <p>Please choose another date.</p>
+    <a href="{{ url_for('home') }}" class="btn">Go Back to Home</a>
+</section>
+{% endblock %}

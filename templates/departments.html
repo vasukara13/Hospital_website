@@ -1,0 +1,14 @@
+<!-- templates/departments.html -->
+{% extends "base.html" %}
+{% block title %}Departments - Sadhuram Memorial Hospital{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Our Departments</h2>
+    <ul>
+        <li><a href="{{ url_for('department_detail', department_name='ENT') }}">ENT Department</a></li>
+        <li><a href="{{ url_for('department_detail', department_name='Cancer') }}">Cancer Department</a></li>
+        <li><a href="{{ url_for('department_detail', department_name='Orthopedic') }}">Orthopedic Department</a></li>
+    </ul>
+</section>
+{% endblock %}

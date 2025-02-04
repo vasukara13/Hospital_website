@@ -1,0 +1,16 @@
+<!-- templates/error.html -->
+{% extends "base.html" %}
+{% block title %}Error - Sadhuram Memorial Hospital{% endblock %}
+
+{% block head %}
+<!-- Link to error.css if you have a separate stylesheet -->
+<link rel="stylesheet" href="{{ url_for('static', filename='error.css') }}">
+{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Error</h2>
+    <p>{{ error_message }}</p>
+    <a href="{{ url_for('home') }}" class="btn">Go Back to Home</a>
+</section>
+{% endblock %}

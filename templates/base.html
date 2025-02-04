@@ -1,0 +1,120 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Kara Memorial Hospital{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Additional head elements -->
+  
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hospital Logo" class="logo">
+                
+            </a>
+        </div>
+    </header>
+    <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('home') }}"><i class="fa-solid fa-home"></i> Home</a></li>
+            <li><a href="{{ url_for('about') }}"><i class="fa-solid fa-info-circle"></i> About Us</a></li>
+            
+            <li class="dropdown">
+                <a href="{{ url_for('departments') }}" class="dropbtn">
+                    <i class="fa-solid fa-hospital-user"></i> Departments
+                    <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('department_detail', department_name='ENT') }}">ENT Department</a>
+                    <a href="{{ url_for('department_detail', department_name='Cancer') }}">Cancer Department</a>
+                    <a href="{{ url_for('department_detail', department_name='Orthopedic') }}">Orthopedic Department</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="{{ url_for('facilities') }}" class="dropbtn">
+                    <i class="fa-solid fa-clinic-medical"></i> Facilities
+                    <i class="fa-solid fa-caret-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('facility_detail', facility_name='Chemotherapy') }}">Chemotherapy</a>
+                    <a href="{{ url_for('facility_detail', facility_name='Radiation Therapy') }}">Radiation Therapy</a>
+                    <a href="{{ url_for('facility_detail', facility_name='X-ray') }}">X-ray</a>
+                    <!-- Add more facilities as needed -->
+                </div>
+            </li>
+            <li>
+                <a href="{{ url_for('home') }}#appointment"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2023 Kara Memorial Hospital</p>
+    </footer>
+
+    <!-- Scroll-to-top button -->
+    <button id="scrollTopBtn" title="Go to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+    <!-- JavaScript for animations and interactivity -->
+    <script>
+    // Scroll-to-top functionality
+    var scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            scrollTopBtn.style.display = "block";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    }
+
+    scrollTopBtn.addEventListener('click', function(){
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+        entries.forEach(entry => {
+            if (!entry.isIntersecting){
+                return;
+            } else {
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+    </script>
+
+    <!-- Additional scripts -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>
+
+

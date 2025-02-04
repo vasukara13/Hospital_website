@@ -1,0 +1,38 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block title %}Home - Kara Memorial Hospital{% endblock %}
+
+{% block content %}
+<section id="welcome">
+    <h2>Welcome to Kara Memorial Hospital</h2>
+    <p>Your health is our priority. We offer specialized care with our state-of-the-art facilities.</p>
+</section>
+
+<!-- Appointment Booking Section -->
+<section id="appointment" class="fade-in">
+    <h2>Book an Appointment</h2>
+    <form action="/submit_appointment" method="post">
+        <label for="patient_name">Full Name:</label>
+        <input type="text" id="patient_name" name="patient_name" required>
+
+        <label for="contact_number">Contact Number:</label>
+        <input type="text" id="contact_number" name="contact_number" required>
+
+        <label for="email_address">Email Address (optional):</label>
+        <input type="email" id="email_address" name="email_address">
+
+        <label for="department">Choose Department:</label>
+        <select id="department" name="department" required>
+            <option value="">--Select Department--</option>
+            <option value="ENT">ENT Department</option>
+            <option value="Cancer">Cancer Department</option>
+            <option value="Ortho">Orthopedic Department</option>
+        </select>
+
+        <label for="appointment_date">Preferred Date:</label>
+        <input type="date" id="appointment_date" name="appointment_date" required>
+
+        <button type="submit"><i class="fa-solid fa-calendar-check"></i> Book Appointment</button>
+    </form>
+</section>
+{% endblock %}

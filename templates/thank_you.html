@@ -1,0 +1,17 @@
+<!-- templates/thank_you.html -->
+{% extends "base.html" %}
+{% block title %}Appointment Confirmed - Sadhuram Memorial Hospital{% endblock %}
+
+{% block head %}
+<!-- Link to no_appointments.css if you have a separate stylesheet -->
+<link rel="stylesheet" href="{{ url_for('static', filename='thank_you.css') }}">
+{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Appointment Confirmed</h2>
+    <p>Thank you for booking an appointment!</p>
+    <p>Your appointment is scheduled for <strong>{{ estimated_time }}</strong> on <strong>{{ appointment_date }}</strong>.</p>
+    <a href="{{ url_for('home') }}" class="btn">Go Back to Home</a>
+</section>
+{% endblock %}
